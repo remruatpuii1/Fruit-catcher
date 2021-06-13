@@ -56,14 +56,19 @@ class Game{
                      players[index - 1].y = y;
                        
                      if(index === player.index){
+                         
                         fill("black");
                         textSize(25);
-                        text(allPlayers[plr].name, x-25, y+25);
+                        text(allPlayers[plr].name ,x-25,y+25);
+
                          
                      }
+                    
+                     text("player 1 :" +allPlayers.player1.score,50,50);
+                     text("player 2 :" +allPlayers.player2.score,50,90);
                  
                  }
-                
+
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
                     player.distance -= 10
                     player.update();
@@ -94,14 +99,16 @@ class Game{
                  }
                  
                   if (player.index !== null) {
-                    for (var i = 0; i < fruitGroup.length; i++) {
-                        if (fruitGroup.get(i).isTouching(players)) {
+                    for(var i = 0;i<fruitGroup.length; i++)
+                    {
+                        if(fruitGroup.get(i).isTouching(players))
+                        {
                             fruitGroup.get(i).destroy();
-                         
-                            
+                            player.score = player.score+1;
+                            player.update();
                         }
-                        
                     }
+                     
                   }
 
     }
